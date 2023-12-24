@@ -1,6 +1,11 @@
 import { create } from "zustand";
 
-export type ModalType = "signIn" | "registerOne" | "nextPassword";
+export type ModalType =
+  | "signIn"
+  | "registerOne"
+  | "nextPassword"
+  | "registerTwo"
+  | "registerThree";
 
 interface ModalState {
   type: ModalType | null;

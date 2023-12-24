@@ -105,7 +105,7 @@ const Auth = () => {
           <p className="mb-4">Already have an account?</p>
           <Button
             onClick={() => onOpen("signIn")}
-            className=" text-[16px] w-64 rounded-3xl bg-transparent border-[0.4px] outline-none text-blue-500 border-white/40"
+            className="text-[16px] w-64 rounded-3xl bg-transparent border-[0.4px] outline-none text-blue-500 border-white/40"
           >
             Sign in
           </Button>
