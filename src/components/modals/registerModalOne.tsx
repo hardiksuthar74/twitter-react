@@ -18,19 +18,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { useState } from "react";
 
 interface formType {
   email: string;
 }
 
 export const RegisterModalOne = () => {
+  const [date, setDate] = useState<Date>(new Date());
   const { isOpen, onClose, onOpen, type } = useModal();
 
   const form = useForm({
@@ -114,38 +109,14 @@ export const RegisterModalOne = () => {
                 </p>
               </div>
               <div className="flex gap-2 pb-10">
-                <Select>
-                  <SelectTrigger className="w-[45%] border-white/20 bg-black border-2 focus:border-none">
-                    <SelectValue placeholder="Month" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-black border-2  border-white/20 border-opacity-5 focus-visible:ring-0 text-white focus-visible:ring-offset-0 w-full focus:border-blue-500">
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
-
-                <Select>
-                  <SelectTrigger className="w-[25%] border-white/20 bg-black border-2 focus:border-none">
-                    <SelectValue placeholder="Day" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-black border-2  border-white/20 border-opacity-5 focus-visible:ring-0 text-white focus-visible:ring-offset-0 w-full focus:border-blue-500">
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
-
-                <Select>
-                  <SelectTrigger className="w-[30%] border-white/20 bg-black border-2 focus:border-none">
-                    <SelectValue placeholder="Year" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-black border-2  border-white/20 border-opacity-5 focus-visible:ring-0 text-white focus-visible:ring-offset-0 w-full focus:border-blue-500">
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  disabled={isLoading}
+                  className="bg-black border-2  border-white/20 border-opacity-5 focus-visible:ring-0 text-white focus-visible:ring-offset-0 w-full focus:border-blue-500"
+                  placeholder="DOB"
+                  type="date"
+                  onChange={(e) => setDate(new Date(e.target.value))}
+                  value={date.toISOString().slice(0, 10)}
+                />
               </div>
 
               <div className="flex flex-col gap-4 pb-10">
